@@ -1,0 +1,171 @@
+/*
+
+Main color: #8e44ad
+
+*/
+
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    font-size: 100%;
+    background-color: #8e44ad;
+    font-family: 'Chicle', cursive;
+}
+
+/*************************/
+/********Reusables*******/
+/***********************/
+
+.container{
+    margin: 0 auto;
+    text-align: center;
+    /*border: 1px solid white;*/
+}
+
+.hidden{
+    display: none;
+}
+
+.inline{
+    display: inline-block;
+}
+
+.block{
+    display: block;
+}
+
+.nextBtn{
+    text-decoration: none;
+    color: whitesmoke;
+    font-size: 2.3vw;
+    padding: 3px 15px;
+    text-align: center;
+    letter-spacing: 5px;
+    border: 1px solid white;
+    border-radius: 4px;
+    box-shadow: 0px 4px 4px rgba(0,0,0,0.6);
+    background-color: #3e1e4b;
+    transition: all 0.4s;
+    /*display: inline-block;*/
+}
+
+.nextBtn:hover{
+    transform: scale(0.8);
+    box-shadow: 0px 0px 40px rgba(251,255,145,0.6);
+}
+
+.transSetup{
+    transition: all 0.8s;
+}
+
+.fadeInSetup{
+    transform: scale(0.1);
+    opacity: 0;
+}
+.fadeOut{
+    transform: scale(0.1);
+    opacity: 0;
+}
+.fadeIn{
+    transform: scale(1.0);
+    opacity: 1;
+}
+/**********************/
+/********Header*******/
+/********************/
+
+h1,h3{
+    font-size: 3em;
+    color:whitesmoke;
+    letter-spacing: 5px;
+    word-spacing: 3px;
+    text-shadow: -2px 3px black;
+}
+
+/****************************/
+/********Welcome Area*******/
+/**************************/
+
+#welcomeMsgArea{
+    margin-top: 20vh;
+}
+#welcomeMsg{
+    color: whitesmoke;
+    font-size: 4vw;
+    letter-spacing: 5px;
+    word-spacing: 3px;
+    text-shadow: -2px 3px black;
+    margin-bottom: 150px;
+}
+
+
+/**************************/
+/********Animations*******/
+/************************/
+
+@keyframes wiggle {
+    0%{
+        transform: rotate(-5deg);
+        box-shadow: 0px 0px 5px rgba(251,255,145,0.6);
+    }
+    5%{
+        transform: rotate(0deg);
+        box-shadow: 0px 0px 20px rgba(251,255,145,0.6);
+    }
+    10%{
+        transform: rotate(5deg);
+        box-shadow: 0px 0px 20px rgba(251,255,145,0.6);
+    }
+    15%{
+        transform: rotate(0deg);
+        box-shadow: 0px 0px 5px rgba(251,255,145,0.6);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+
+}
+
+/*************************/
+/********Game Area*******/
+/***********************/
+
+#gameArea{
+    margin-top: 40px;
+}
+
+.gameDescription{
+    margin-bottom: 50px;
+}
+
+#gameDescriptionArea{
+    margin-top: 50px;
+    font-size: 2vw;
+    color:whitesmoke;
+    letter-spacing: 5px;
+    word-spacing: 3px;
+    text-shadow: -2px 3px black;
+    line-height: 1.2em;
+    margin-bottom: 50px;
+}
+.outputBlock{
+    display: inline-block;
+    border: 1px solid white;
+    /*font-size: 7.5em;*/
+    font-size: 6vw;
+    margin-right: 20px;
+}
+.outputLetter{
+    padding: 10px;
+}
+
+#fakeInputArea{
+    font-size: 1.2vw;
+    border-radius: 5px;
+    animation-name: wiggle;
+    /*animation-fill-mode: both;*/
+    animation-duration: 2s;
+    animation-iteration-count:infinite;
+}
