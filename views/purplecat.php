@@ -14,6 +14,12 @@
     <h1>Purplecat</h1>
     <h3>Can you beat the challenge?</h3>
 </div>
+<p class="container hidden" id="speechBubble">
+    Meow! Feed me! I am hunnngry!
+</p>
+<div class="container hidden" id="catFace">
+    <img src="../resources/img/purpleCat.png">
+</div>
 <div class="container" id="welcomeMsgArea">
     <div class="container" id="welcomeMsgContainer">
         <p id="welcomeMsg">Welcome to the Purplecat challenge!</p>
@@ -31,78 +37,78 @@
     </div>
     <div class="container hidden descContainer" id="descriptionAreaThree">
         <p class="gameDescription" id="gameDescriptionThree">Your goal is to type into the input area so that the boxes display
-            "Purplecat"</p>
+            "Purplecat".</br>The content of these boxes will change as you type.</p>
         <a href="#" class="nextBtn inline" id="nextFour">Next ></a>
     </div>
     <div class="container hidden descContainer" id="descriptionAreaFour">
         <p class="gameDescription" id="gameDescriptionFour">This will be much harder than it seems, but do not give up! You can do this!</p>
-        <a href="#" class="nextBtn inline" id="nextFive">Play !</a>
+        <a href="#" class="nextBtn inline wiggle" id="nextFive">Play !</a>
     </div>
 </div>
 <div class="container hidden" id="fakeGameArea">
     <div class="container hidden" id="fakeBlockArea">
-        <div class="container outputBlock">
-            <p class="outputLetter">P</p>
+        <div class="container outputBlock fakeBlock">
+            <p class="outputLetter">?</p>
         </div>
-        <div class="container outputBlock">
-            <p class="outputLetter">u</p>
+        <div class="container outputBlock fakeBlock">
+            <p class="outputLetter">?</p>
         </div>
-        <div class="container outputBlock">
-            <p class="outputLetter">r</p>
+        <div class="container outputBlock fakeBlock">
+            <p class="outputLetter">?</p>
         </div>
-        <div class="container outputBlock">
-            <p class="outputLetter">p</p>
+        <div class="container outputBlock fakeBlock">
+            <p class="outputLetter">?</p>
         </div>
-        <div class="container outputBlock">
-            <p class="outputLetter">l</p>
+        <div class="container outputBlock fakeBlock">
+            <p class="outputLetter">?</p>
         </div>
-        <div class="container outputBlock">
-            <p class="outputLetter">e</p>
+        <div class="container outputBlock fakeBlock">
+            <p class="outputLetter">?</p>
         </div>
-        <div class="container outputBlock">
-            <p class="outputLetter">c</p>
+        <div class="container outputBlock fakeBlock">
+            <p class="outputLetter">?</p>
         </div>
-        <div class="container outputBlock">
-            <p class="outputLetter">a</p>
+        <div class="container outputBlock fakeBlock">
+            <p class="outputLetter">?</p>
         </div>
-        <div class="container outputBlock">
-            <p class="outputLetter">t</p>
+        <div class="container outputBlock fakeBlock">
+            <p class="outputLetter">?</p>
         </div>
     </div>
     <div class="container hidden" id="fakeInputArea">
-        <input type="text" placeholder="Type purplecat">
+        <input type="text" disabled>
     </div>
 </div>
 <div class="container hidden" id="gameArea">
     <div class="container outputBlock">
-        <p class="outputLetter">P</p>
+        <p class="outputLetter">?</p>
     </div>
     <div class="container outputBlock">
-        <p class="outputLetter">u</p>
+        <p class="outputLetter">?</p>
     </div>
     <div class="container outputBlock">
-        <p class="outputLetter">r</p>
+        <p class="outputLetter">?</p>
     </div>
     <div class="container outputBlock">
-        <p class="outputLetter">p</p>
+        <p class="outputLetter">?</p>
     </div>
     <div class="container outputBlock">
-        <p class="outputLetter">l</p>
+        <p class="outputLetter">?</p>
     </div>
     <div class="container outputBlock">
-        <p class="outputLetter">e</p>
+        <p class="outputLetter">?</p>
     </div>
     <div class="container outputBlock">
-        <p class="outputLetter">c</p>
+        <p class="outputLetter">?</p>
     </div>
     <div class="container outputBlock">
-        <p class="outputLetter">a</p>
+        <p class="outputLetter">?</p>
     </div>
     <div class="container outputBlock">
-        <p class="outputLetter">t</p>
+        <p class="outputLetter">?</p>
     </div>
     <div class="container" id="inputArea">
-        <input type="text" placeholder="Type purplecat">
+        <input id="inputBox" type="text">
     </div>
 </div>
 
