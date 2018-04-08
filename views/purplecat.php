@@ -113,7 +113,19 @@
 </div>
 
 <script type="text/javascript" src="../scripts/displayManager.js"></script>
-<script type="text/javascript" src="../scripts/purplecat.js"></script>
 <script type="text/javascript" src="../scripts/gameManager.js"></script>
+<script type="text/javascript" src="../scripts/purplecat.js"></script>
+
+<script type="text/javascript">
+
+    var displayManager = new DisplayManager();
+    var gameManager = new GameManager(displayManager);
+
+
+    window.onload=function(){
+        displayManager.setupButtons();
+    };
+</script>
+
 </body>
 </html>
