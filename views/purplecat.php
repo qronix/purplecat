@@ -112,6 +112,8 @@
     </div>
 </div>
 
+<script type="text/javascript" src="../scripts/displayManager.js"></script>
 <script type="text/javascript" src="../scripts/purplecat.js"></script>
+<script type="text/javascript" src="../scripts/gameManager.js"></script>
 </body>
 </html>

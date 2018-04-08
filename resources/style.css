@@ -96,6 +96,7 @@ h1,h3{
 #speechBubble{
 
     position: absolute;
+    flex-direction: column;
     width: 200px;
     height: 20px;
     color: black;
@@ -104,6 +105,8 @@ h1,h3{
     font-size: 1.4em;
     top:50vh;
     padding: 20px;
+    text-align: center;
+    justify-content: center;
     background-color: whitesmoke;
     border: 1px solid black;
     border-radius: 50px;
