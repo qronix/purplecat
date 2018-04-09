@@ -1,3 +1,13 @@
+/*
+* Display Management script for Purplecat challenge.
+*
+*
+* Jon H
+*
+* April 2018
+
+* */
+
 class DisplayManager{
 
     constructor(){
@@ -17,12 +27,14 @@ class DisplayManager{
         this.gameArea        = document.getElementById("gameArea");
         this.gameDescArea    = document.getElementById("gameDescriptionArea");
         this.welcomeMsgArea  = document.getElementById("welcomeMsgArea");
+        this.colorRing       = document.getElementById("catColorRing");
+        this.colorRingWidth  = 6;
         this.gameDemoMessage = "Purplecat";
         this.gameStrChars    = this.gameDemoMessage.split('');
         this.outputLetterEls = document.getElementsByClassName("outputLetter");
         this.gameManager     = new GameManager(this);
-
-        console.log("Display manager setup");
+        this.outputString    = "";
+        this.winArea         = document.getElementById("winArea");
     }
 
      setupButtons(){
@@ -33,12 +45,6 @@ class DisplayManager{
                 event.preventDefault();
             });
         });
-    }
-
-     setupGameManager(gameManager){
-        this.gameManager = gameManager;
-        console.log("GM set");
-        console.dir(this.gameManager);
     }
 
     get getSpeechBubble(){
@@ -140,38 +146,80 @@ class DisplayManager{
             if(inputBox.value.length>9){
                 inputBox.value = inputBox.value.substr(0,outerClass.maxInputLength);
             }
-            var trimmedInput = inputBox.value.substr(0,outerClass.maxInputLength);
-            if(event.keyCode!==8){ //backspace
-                 console.dir(outerClass.gameManager);
+            if(event.keyCode!==8 && event.keyCode!==16 && inputBox.value.length<outerClass.maxInputLength){ //backspace or shift
+
+                if(outerClass.gameManager.correctStringIndex<9){
+                    outerClass.gameManager.correctStringIndex++;
+                }
             }
-            if(inputBox.value.length>0){
-                outerClass.handleInput(trimmedInput,outerClass.gameManager.keyMap);
+            if(event.keyCode===8){
+                if(outerClass.gameManager.correctStringIndex>0){
+                    outerClass.gameManager.correctStringIndex--;
+                }
+                if(outerClass.outputString.length>0){
+                    outerClass.outputString = outerClass.outputString.slice(0,-1);
+                }
+                outerClass.updateDisplayBlocks();
+            }
+            if(inputBox.value.length>0 && event.keyCode!==8 && event.keyCode!==16){
+                outerClass.handleInput(inputBox.value[inputBox.value.length-1],outerClass.gameManager.keyMap);
+                outerClass.gameManager.generateKeymap();
             }
             if(inputBox.value.length===0){
                 outerClass.cleanOutputBlocks();
+                outerClass.gameManager.correctStringIndex = 0;
             }
+            outerClass.gameManager.setCorrectLetter();
+            outerClass.gameManager.generateHint();
         });
     }
 
-     handleInput(input,keyMap){
-        this.cleanOutputBlocks();
-        var inputVals = input.split('');
-        var outPutString = "";
-        inputVals.forEach(function(inputChar){
-            var inputKeyCode = inputChar.charCodeAt();
-            outPutString += keyMap[inputKeyCode-32];
-        });
-        var output = outPutString.split('');
-        for(var i=0; i<outPutString.length;i++){
-            this.outputLetterEls[i].innerText = output[i];
-        }
+     async handleInput(input,keyMap){
+         if(this.outputString.length<this.maxInputLength) {
+             var inputKeyCode = input.charCodeAt();
+             this.outputString += keyMap[inputKeyCode-32];
+             this.updateDisplayBlocks();
+         }
+         if(this.gameManager.checkWin(this.outputString)){
+             await sleep(2000);
+             this.createWinScreen();
+             this.playWinSound();
+             this.showWinScreen();
+         }
+    }
 
-        this.gameManager.checkWin(outPutString);
+    showWinScreen(){
+        this.fadeOut(this.gameArea,null);
+    }
+
+    createWinScreen(){
+        for(var i=0;i<100; i++){
+            var catFace = document.createElement("div");
+            catFace.style.position = "absolute";
+            catFace.style.top      = Math.floor(Math.random()*window.innerHeight)+'px';
+            catFace.style.left     = Math.floor(Math.random()*window.innerWidth)+'px';
+            catFace.innerHTML      = "<img class='catFace' src='../resources/img/purpleCat.png'>";
+            this.winArea.appendChild(catFace);
+        }
+    }
+    async playWinSound(){
+        var audio = new Audio('../resources/sound/meow.mp3');
+        while(true){
+            audio.play();
+            await sleep(1);
+        }
+    }
+
+    updateDisplayBlocks(){
+        for(var i=0; i<this.outputString.length; i++){
+            this.outputLetterEls[i].innerText = this.outputString[i];
+        }
     }
      cleanOutputBlocks(){
         [].forEach.call(this.outputLetterEls,function(letter){
             letter.innerText='?';
         });
+        this.outputString = "";
     }
     async showMessage(){
         this.showSpeechBubble();
@@ -185,6 +233,11 @@ class DisplayManager{
         this.speechBubble.classList.remove("hidden");
         this.speechBubble.style.display = "flex";
         this.speechBubble.classList.replace("fadeOut","fadeIn");
+    }
+
+    createBorder(r,g,b,borderType){
+        this.colorRing.style.border =
+            this.colorRingWidth+'px'+" "+borderType+ " rgb("+r+","+g+","+b+")";
     }
 
 }

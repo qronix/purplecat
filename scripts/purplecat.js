@@ -1,3 +1,13 @@
+/*
+* Purplecat class for Purplecat challenge.
+*
+*
+* Jon H
+*
+* April 2018
+
+* */
+
 class Purplecat{
 
 
@@ -7,12 +17,11 @@ class Purplecat{
     }
 
      catWelcomeMessage(){
-        this.speechBubble.innerHTML = "Welcome to Purplecat!";
-        this.displayManager.showMessage();
+        this.setupSpeechMessage("Welcome to Purplecat");
 
     }
      setupSpeechMessage(message){
-        this.speechBubble.innerText = message;
+        this.speechBubble.innerHTML = message;
         this.displayManager.showMessage();
     }
 }

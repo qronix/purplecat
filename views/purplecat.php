@@ -1,5 +1,13 @@
 <?php
+/*
+* Purplecat page for Purplecat challenge.
+*
+*
+* Jon H
+*
+* April 2018
 
+* */
 ?>
 
 <html>
@@ -14,11 +22,16 @@
     <h1>Purplecat</h1>
     <h3>Can you beat the challenge?</h3>
 </div>
+<div class="container" id="winArea">
+
+</div>
 <p class="container hidden" id="speechBubble">
     Meow! Feed me! I am hunnngry!
 </p>
 <div class="container hidden" id="catFace">
-    <img src="../resources/img/purpleCat.png">
+    <div class="container" id="catColorRing">
+        <img src="../resources/img/purpleCat.png">
+    </div>
 </div>
 <div class="container" id="welcomeMsgArea">
     <div class="container" id="welcomeMsgContainer">
@@ -117,11 +130,7 @@
 <script type="text/javascript" src="../scripts/purplecat.js"></script>
 
 <script type="text/javascript">
-
     var displayManager = new DisplayManager();
-    var gameManager = new GameManager(displayManager);
-
-
     window.onload=function(){
         displayManager.setupButtons();
     };
